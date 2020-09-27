@@ -44,7 +44,8 @@ RUN mkdir -m 700 /root/.ssh; \
     touch -m 600 /root/.ssh/known_hosts; \
     ssh-keyscan github.com > /root/.ssh/known_hosts
 
-COPY . /usr/local/elixir
+RUN git clone git@github.com:mlerner/bitcoin-source-browser.git /usr/local/elixir
+RUN cd /usr/local/elixir && git checkout ml-heroku-deploy
 
 RUN \
   mkdir -p /srv/elixir-data/
