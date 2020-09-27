@@ -40,8 +40,11 @@ RUN \
 RUN \
   pip3 install Pygments-2.6.1.elixir-py3-none-any.whl
 
-RUN \
-  git clone https://github.com/bootlin/elixir.git /usr/local/elixir/
+RUN mkdir -m 700 /root/.ssh; \
+    touch -m 600 /root/.ssh/known_hosts; \
+    ssh-keyscan github.com > /root/.ssh/known_hosts
+
+COPY . /usr/local/elixir
 
 RUN \
   mkdir -p /srv/elixir-data/
