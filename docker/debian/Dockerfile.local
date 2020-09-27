@@ -44,8 +44,7 @@ RUN mkdir -m 700 /root/.ssh; \
     touch -m 600 /root/.ssh/known_hosts; \
     ssh-keyscan github.com > /root/.ssh/known_hosts
 
-RUN git clone https://github.com/mlerner/bitcoin-source-browser.git /usr/local/elixir
-RUN cd /usr/local/elixir && git checkout ml-heroku-deploy
+COPY . /usr/local/elixir
 
 RUN \
   mkdir -p /srv/elixir-data/
@@ -71,3 +70,5 @@ RUN \
   a2enmod cgi rewrite
 
 EXPOSE 80
+
+ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
