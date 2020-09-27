@@ -1,3 +1,6 @@
 build:
     docker:
         web: docker/debian/Dockerfile
+    config:
+        GIT_REPO_URL: https://github.com/bitcoin/bitcoin.git
+        PROJECT: bitcoin
