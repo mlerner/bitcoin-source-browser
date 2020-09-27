@@ -4,5 +4,3 @@ build:
     config:
         GIT_REPO_URL: https://github.com/bitcoin/bitcoin.git
         PROJECT: bitcoin
-run:
-    web: /usr/sbin/apache2ctl -D FOREGROUND
